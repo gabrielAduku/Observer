@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Observer",
+  "version": "0.1",
+
+  "description": "A Privacy-Enhancing Web Extension",
+  "homepage_url": "https://github.com/gabrielAduku/Observer",
+  "icons": {
+    "48": "icons/observer-48.png",
+    "96": "icons/observer-96.png"
+  },
+
+  "permissions": [
+    "activeTab"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/observer-48.png",
+    "default_title": "Observer",
+    "default_popup": "panels/main.html"
+  }
+}
