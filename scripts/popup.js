@@ -1,7 +1,26 @@
-function trackerStats()
+function getTrackerStats()
 {
   var trackersFound = chrome.extension.getBackgroundPage().trackersFound;
   var trackersBlocked = chrome.extension.getBackgroundPage().trackersBlocked;
+  var trackerUrls = chrome.extension.getBackgroundPage().trackerUrls;
+
+  if (trackersFound == 0 && trackersBlocked == 0)
+  {
+    var percentBlocked = "No Trackers Found"
+    var blockedDesc = "Hooray!"
+  }
+  else
+  {
+    var percentBlocked = ((trackersFound / trackersBlocked) * 100).toString() + '% trackers blocked';
+    var blockedDesc = trackersFound.toString() + ' out of ' + trackersBlocked + ' found and blocked';
+  }
+
+  document.getElementById('trackers-blocked-count').innerText = percentBlocked;
+  document.getElementById('trackers-blocked-description').innerText = blockedDesc;
+  //console.log("Trackers found: ", trackersFound);
+  //console.log("Trackers blocked: ", trackersBlocked);
+  //console.log("Trackers urls: ", trackerUrls);
+
 }
 
 function reloadTab()
@@ -39,7 +58,6 @@ window.onload = function ()
     links[i].onclick = function()
     {
       // remove classes on all elements
-      var links = document.getElementsByTagName('a');
       for (var i = 0; i < links.length; i++)
       {
         links[i].className = ""
@@ -51,4 +69,5 @@ window.onload = function ()
   }
 
 	updateBtnLabel();
+  getTrackerStats();
 }

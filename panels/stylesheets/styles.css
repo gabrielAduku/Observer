@@ -66,6 +66,7 @@ button:hover
 /* Change the color of links on hover */
 .banner a:hover {
   background-color: #2d3447;
+  cursor:pointer;
 }
 
 /* Add a color to the active/current link */
@@ -74,9 +75,21 @@ button:hover
   color: #e8745d;
 }
 
+/* TRACKER LIST */
 .tracker-list
 {
-  overflow: auto;
+  text-align: center;
+}
+
+h2
+{
+  font-size: 30px;
+}
+
+ul
+{
+  float: left;
+  text-align: left;
 }
 
 .footer
