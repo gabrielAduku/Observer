@@ -13,10 +13,14 @@
   "permissions": [
     "webRequest",
     "webRequestBlocking",
+    "http://*/",
+    "https://*/",
+    "tabs"
   ],
 
   "background": {
-    "scripts": ["scripts/blocked_domains.js", "scripts/background.js"]
+    "scripts": ["scripts/blocked_domains.js", "scripts/background.js"],
+    "persistent": true
   },
 
   "browser_action": {

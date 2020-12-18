@@ -1,13 +1,12 @@
-function blockDomain(detes)
-{
-  console.log("Domain Blocked:", detes.url);
-  return {
-    cancel: true
-  };
-}
+var enabled = true;
+var trackersFound = 0;
+var trackersBlocked = 0;
 
-browser.webRequest.onBeforeRequest.addListener(
-    blockDomain,
+chrome.webRequest.onBeforeRequest.addListener(
+    function(details) {
+        console.log("blocking:", details.url);
+        return {cancel: enabled };
+    },
     {urls: blocked_domains},
     ["blocking"]
 );
