@@ -1,9 +1,13 @@
-
-
 /* Baseline styling */
-*{
-  background-color: #191919ff;
+* {
+  background-color: rgb(50,50,50);
   font-family: Prime;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   color: white;
+}
+
+body
+{
+  width: 400px;
+  height: 500px;
 }
