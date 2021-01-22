@@ -1,16 +1,17 @@
 /* Colours:
 
   background dark: #1e2331
-  background darker: #1b1f2b
+  background redder: #311e1e
   red: #7e3c3c
-  orange: #e8745d
+  orange: #cd6460
   red glow: #ff2a00
+  cyan: #65ffec
 
 */
 * {
   font-family: Prime;
   letter-spacing: 2px;
-  color: white;
+  color: #65ffec;
 }
 
 body
@@ -18,7 +19,8 @@ body
   width: 400px;
   height: 500px;
   margin: 0;
-  background-color: #1e2331;
+  background: #311e1e;
+  background: radial-gradient(circle, #311e1e 0%, #1e2331 100%);
 }
 
 button
@@ -27,7 +29,7 @@ button
   box-shadow: 0px 1px 5px #ff2a00;
   border-radius: 5px;
   border-width: 1px;
-  border-color: #e8745d;
+  border-color: #cd6460;
   outline: none;
   width: 100px;
   height: 50px;
@@ -35,9 +37,32 @@ button
   font-size: 15px;
 }
 
-#disable-button
+#settings-icon, #shutdown-icon
 {
-  margin-top: 5px;
+  transition: all 0.5s ease-in-out 0s;
+  width: 48px;
+  height: 48px;
+  float: right;
+  margin-right: 5px;
+  margin-top: 3px;
+}
+
+#settings-icon:hover
+{
+  cursor: pointer;
+  transform: rotate(180deg);
+  transition: all 0.7s ease-in-out 0s;
+}
+
+.main
+{
+  margin: 0 auto;
+  width: 50%;
+}
+
+#svg-ring
+{
+  margin-top: 50%;
 }
 
 button:hover
@@ -48,7 +73,6 @@ button:hover
 
 .banner
 {
-  background-color: #1b1f2b;
   left: 0;
   top: 0;
   width: 100%;
@@ -56,6 +80,7 @@ button:hover
 }
 .banner a
 {
+  transition: all 0.2s ease-in-out;
   float: left;
   text-align: center;
   padding: 14px 16px;
@@ -65,14 +90,30 @@ button:hover
 
 /* Change the color of links on hover */
 .banner a:hover {
-  background-color: #2d3447;
+  transition: all 0.2s ease-in-out;
+  text-shadow: 2px 2px 5px #65ffec;;
   cursor:pointer;
 }
 
 /* Add a color to the active/current link */
 .banner a.current {
-  background-color: #1e2331;
-  color: #e8745d;
+  text-shadow: 2px 2px 5px #cd6460;
+  color: #cd6460;
+}
+
+#progress-ring-circle
+{
+  transition: 0.35s stroke-dashoffset;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+#trackers-blocked-percent
+{
+  font: Prime;
+  font-size: 30px;
+  letter-spacing: 2px;
+  fill: #65ffec;
 }
 
 /* TRACKER LIST */
@@ -99,7 +140,6 @@ ul
   bottom: 0;
   width: 100%;
   height: 60px;
-  background-color: #1b1f2b;
-  color: white;
+  color: #65ffec;
   text-align: center;
 }

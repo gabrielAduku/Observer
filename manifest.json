@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Observer",
-  "version": "0.1",
+  "version": "0.1.5",
 
   "description": "A Privacy-Enhancing Web Extension",
   "homepage_url": "https://github.com/gabrielAduku/Observer",
@@ -11,6 +11,7 @@
   },
 
   "permissions": [
+    "webNavigation",
     "webRequest",
     "webRequestBlocking",
     "http://*/",
@@ -22,6 +23,7 @@
     "scripts": ["scripts/blocked_domains.js", "scripts/background.js"],
     "persistent": true
   },
+
 
   "browser_action": {
     "default_icon": "icons/observer-48.png",

@@ -5,28 +5,24 @@
     <meta name="description" content="A Privacy-Enhancing Web Extension">
     <link rel="stylesheet" href="/panels/stylesheets/styles.css"/>
     <title>Observer</title>
-    <script type="text/javascript" src="../scripts/popup.js"></script>
   </head>
   <body>
     <div class="banner">
       <a class="current">Observer</a>
-      <a>Settings</a>
+      <a>Details</a>
       <a>Summary</a>
     </div>
-    <div class="tracker-list">
-      <div class="trackers-blocked">
-        <h2 id="trackers-blocked-count">0%</h2>
-        <p id="trackers-blocked-description">Placeholder</p>
-      </div>
-      <div class="trackers-url-list">
-        <ul id="trackers-url-list">
-
-        </ul>
-      </div>
+    <div class="main">
+      <svg id="svg-ring" width="180" height="180">
+        <circle id="progress-ring-circle" stroke="#65ffec" stroke-width="5" fill="transparent" r="80" cx="90" cy="90"/>
+        <text x="50%" y="50%" text-anchor="middle" id="trackers-blocked-percent">0%</text>
+      </svg>
     </div>
 
   <div class="footer">
-    <button type="button" id="disable-button">Disable</button>
+    <input type="image" src="/images/cogwheel_orange.png" id="settings-icon"/>
+    <input type="image" src="/images/shutdown_orange.png" id="shutdown-icon"/>
   </div>
+  <script type="text/javascript" src="../scripts/popup.js"></script>
   </body>
 </html>

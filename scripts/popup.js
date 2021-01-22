@@ -1,25 +1,33 @@
+
+// PROGRESS RING VARS
+var ring = document.getElementById('progress-ring-circle');
+var radius = ring.r.baseVal.value;
+var circumference = radius * 2 * Math.PI;
+
+ring.style.strokeDasharray = `${circumference} ${circumference}`;
+ring.style.strokeDashoffset = `${circumference}`;
+
+function setProgRing(progress)
+{
+  const offset = circumference - progress / 100 * circumference;
+  ring.style.strokeDashoffset = offset;
+  document.getElementById('trackers-blocked-percent').textContent = progress.toString() + '%';
+}
+
 function getTrackerStats()
 {
   var trackersFound = chrome.extension.getBackgroundPage().trackersFound;
   var trackersBlocked = chrome.extension.getBackgroundPage().trackersBlocked;
   var trackerUrls = chrome.extension.getBackgroundPage().trackerUrls;
 
-  if (trackersFound == 0 && trackersBlocked == 0)
+  var percentBlocked = trackersFound / trackersBlocked * 100;
+
+  if (isNaN(percentBlocked))
   {
-    var percentBlocked = "No Trackers Found"
-    var blockedDesc = "Hooray!"
-  }
-  else
-  {
-    var percentBlocked = ((trackersFound / trackersBlocked) * 100).toString() + '% trackers blocked';
-    var blockedDesc = trackersFound.toString() + ' out of ' + trackersBlocked + ' found and blocked';
+    percentBlocked = 0;
   }
 
-  document.getElementById('trackers-blocked-count').innerText = percentBlocked;
-  document.getElementById('trackers-blocked-description').innerText = blockedDesc;
-  //console.log("Trackers found: ", trackersFound);
-  //console.log("Trackers blocked: ", trackersBlocked);
-  //console.log("Trackers urls: ", trackerUrls);
+  setProgRing(70);
 
 }
 
@@ -35,14 +43,15 @@ function reloadTab()
 // functions to update views
 function updateBtnLabel()
 {
-  var enabled = chrome.extension.getBackgroundPage().enabled;
-  document.getElementById('disable-button').innerText = enabled ? "Disable" : "Enable";
+  // Fix this later
+  //var enabled = chrome.extension.getBackgroundPage().enabled;
+  //document.getElementById('disable-button').innerText = enabled ? "Disable" : "Enable";
 }
 
 window.onload = function ()
 {
   // 'Disable' button click event
-	document.getElementById('disable-button').onclick = function ()
+	document.getElementById('shutdown-icon').onclick = function ()
   {
 		var background = chrome.extension.getBackgroundPage();
 
