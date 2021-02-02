@@ -37,6 +37,24 @@ button
   font-size: 15px;
 }
 
+#status-header
+{
+  margin: 0 auto;
+  padding: 0;
+  letter-spacing: 5px;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* span class */
+.highlight
+{
+  font-weight: bold;
+  font-stretch: expanded;
+  text-shadow: 2px 2px 5px #cd6460;
+  color: #cd6460;
+}
+
 #settings-icon, #shutdown-icon
 {
   transition: all 0.5s ease-in-out 0s;
@@ -63,6 +81,7 @@ button
 #svg-ring
 {
   margin-top: 50%;
+  text-align: center;
 }
 
 button:hover

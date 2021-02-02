@@ -27,7 +27,7 @@ function getTrackerStats()
     percentBlocked = 0;
   }
 
-  setProgRing(70);
+  setProgRing(percentBlocked);
 
 }
 
@@ -40,13 +40,11 @@ function reloadTab()
   });
 }
 
-// functions to update views
-function updateBtnLabel()
+function updateOnLabel()
 {
-  // Fix this later
-  //var enabled = chrome.extension.getBackgroundPage().enabled;
-  //document.getElementById('disable-button').innerText = enabled ? "Disable" : "Enable";
+  var enabled = chrome.extension.getBackgroundPage().enabled;
+  document.getElementById('status-header').innerHTML = enabled ? 'OBSERVER IS <span class="highlight">ON.</span>' : 'OBSERVER IS <span class="highlight">OFF.</span>';
 }
 
-updateBtnLabel();
+updateOnLabel();
 getTrackerStats();
