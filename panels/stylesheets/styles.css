@@ -5,6 +5,7 @@
   red: #7e3c3c
   orange: #cd6460
   red glow: #ff2a00
+  yellow: #F3E600
   cyan: #65ffec
 
 */
@@ -37,7 +38,7 @@ button
   font-size: 15px;
 }
 
-#status-header
+.wide-text
 {
   margin: 0 auto;
   padding: 0;
@@ -53,6 +54,16 @@ button
   font-stretch: expanded;
   text-shadow: 2px 2px 5px #cd6460;
   color: #cd6460;
+}
+
+.attention
+{
+  margin: 0 auto;
+  text-align: center;
+  font-weight: bold;
+  font-stretch: expanded;
+  text-shadow: 2px 2px 5px #cd6460;
+  color: #F3E600;
 }
 
 #settings-icon, #shutdown-icon
@@ -78,6 +89,19 @@ button
   width: 50%;
 }
 
+.summary-main
+{
+  margin-top: 20px;
+}
+
+.info
+{
+  float:left;
+  width: 100%;
+  list-style-type: none;
+}
+
+
 #svg-ring
 {
   margin-top: 50%;
@@ -96,6 +120,8 @@ button:hover
   top: 0;
   width: 100%;
   overflow: hidden;
+  box-shadow: 0 2px 2px #cd6460;
+
 }
 .banner a
 {
