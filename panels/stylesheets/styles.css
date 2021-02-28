@@ -89,9 +89,40 @@ button
   width: 50%;
 }
 
-.summary-main
+.summary-main, .details-main
 {
   margin-top: 20px;
+}
+
+.overflow-box
+{
+
+  margin: 0 auto;
+  overflow:auto;
+  width:400px;
+  height:100px;
+}
+
+
+/* Using Webkit here, not compatible with IE and Firefox. */
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* SCROLLBAR Track */
+::-webkit-scrollbar-track
+{
+  background: #2c3344;
+}
+
+/* SCROLLBAR Handle */
+::-webkit-scrollbar-thumb
+{
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: #242a3a;
+    box-shadow: none;
 }
 
 .info
@@ -159,12 +190,6 @@ button:hover
   font-size: 30px;
   letter-spacing: 2px;
   fill: #65ffec;
-}
-
-/* TRACKER LIST */
-.tracker-list
-{
-  text-align: center;
 }
 
 h2
