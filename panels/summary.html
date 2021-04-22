@@ -12,31 +12,36 @@
       <a>Details</a>
       <a class="current">Summary</a>
     </div>
+    <div id="graph">
+
+    </div>
     <div>
+      <div>
+        <h3 class="attention">TODAY</h3>
+        <div class="centeredInfo">
+          <h4><span class="highlight" id="summaryTrackers">298</span></h4>
+        </div>
+      </div>
       <div class="summary-main">
-        <h3 class="attention">[PH] LIFETIME</h3>
-        <ul class="info">
-          <li>[PH] Trackers detected: <span class="highlight">3000</span></li>
-          <li>[PH] Trackers blocked: <span class="highlight">2998</span></li>
-          <li>[PH] Percentage efficacy: <span class="highlight">99%</span></li>
-        </ul>
+        <h3 class="attention">ALLTIME</h3>
+        <div class="centeredInfo">
+          <h4><span class="highlight" id="summaryTrackers">20,102</span></h4>
+        </div>
       </div>
       <div>
-        <h3 class="attention">[PH] 24-HOUR</h3>
-        <ul class="info">
-          <li>[PH] Trackers detected: <span class="highlight">300</span></li>
-          <li>[PH] Trackers blocked: <span class="highlight">298</span></li>
-          <li>[PH] Percentage efficacy: <span class="highlight">99%</span></li>
-        </ul>
+        <h3 class="attention">CURRENT TREND</h3>
+        <div class="summaryFigure">
+          <input type="image" src="/images/arrow_green.png" id="arrowGreen"/><h4><span class="highlight" id="summaryTrackers">-4.35%</span></h4>
+        </div>
       </div>
     </div>
-
     <div class="footer">
       <input type="image" src="/images/cogwheel_orange.png" id="settings-icon"/>
       <input type="image" src="/images/shutdown_orange.png" id="shutdown-icon"/>
     </div>
 
     <script type="text/javascript" src="../scripts/navbar.js"></script>
+    <script type="text/javascript" src="../scripts/summary.js"></script>
     <script type="text/javascript" src="../scripts/footer.js"></script>
   </body>
 </html>

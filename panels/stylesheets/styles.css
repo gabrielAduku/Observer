@@ -1,18 +1,19 @@
-/* Colours:
+:root
+{
+  --background_dark: #1e2331;
+  --background_redder: #311e1e;
+  --red: #7e3c3c;
+  --orange: #cd6460;
+  --red_glow: #ff2a00;
+  --yellow: #F3E600;
+  --cyan: #65ffec;
+  --green: #39ff14;
+}
 
-  background dark: #1e2331
-  background redder: #311e1e
-  red: #7e3c3c
-  orange: #cd6460
-  red glow: #ff2a00
-  yellow: #F3E600
-  cyan: #65ffec
-
-*/
 * {
   font-family: Prime;
   letter-spacing: 2px;
-  color: #65ffec;
+  color: var(--cyan);
 }
 
 body
@@ -20,17 +21,17 @@ body
   width: 400px;
   height: 500px;
   margin: 0;
-  background: #311e1e;
-  background: radial-gradient(circle, #311e1e 0%, #1e2331 100%);
+  background: var(--background_redder);
+  background: radial-gradient(circle, var(--background_redder) 0%, var(--background_dark) 100%);
 }
 
 button
 {
-  background-color: #7e3c3c;
-  box-shadow: 0px 1px 5px #ff2a00;
+  background-color: var(--red);
+  box-shadow: 0px 1px 5px var(--red_glow);
   border-radius: 5px;
   border-width: 1px;
-  border-color: #cd6460;
+  border-color: var(--orange);
   outline: none;
   width: 100px;
   height: 50px;
@@ -52,18 +53,19 @@ button
 {
   font-weight: bold;
   font-stretch: expanded;
-  text-shadow: 2px 2px 5px #cd6460;
-  color: #cd6460;
+  text-shadow: 2px 2px 5px var(--orange);
+  color: var(--orange);
 }
 
 .attention
 {
   margin: 0 auto;
+  font-size: 16px;
   text-align: center;
   font-weight: bold;
   font-stretch: expanded;
-  text-shadow: 2px 2px 5px #cd6460;
-  color: #F3E600;
+  text-shadow: 2px 2px 5px var(--orange);
+  color: var(--yellow);
 }
 
 .information
@@ -79,6 +81,24 @@ button
   float: right;
   margin-right: 5px;
   margin-top: 3px;
+}
+
+#arrowRed
+{
+  float:left;
+  width: 24px;
+  height: 24px;
+  -webkit-filter: drop-shadow(1px 1px 5px var(--red_glow));
+  filter: drop-shadow(1px 1px 5px var(--red_glow));
+}
+
+#arrowGreen
+{
+  float:left;
+  width: 24px;
+  height: 24px;
+  -webkit-filter: drop-shadow(1px 1px 5px var(--green));
+  filter: drop-shadow(1px 1px 5px var(--green));
 }
 
 #settings-icon:hover
@@ -104,7 +124,7 @@ button
 
   margin: 0 auto;
   overflow:auto;
-  width:400px;
+  width:350px;
   height:200px;
 }
 
@@ -137,6 +157,10 @@ button
   list-style-type: none;
 }
 
+.centeredInfo
+{
+  text-align: center;
+}
 
 #svg-ring
 {
@@ -146,7 +170,7 @@ button
 
 button:hover
 {
-  box-shadow: 0px 2px 15px #ff2a00;
+  box-shadow: 0px 2px 15px var(--red_glow);
   cursor:pointer;
 }
 
@@ -156,7 +180,7 @@ button:hover
   top: 0;
   width: 100%;
   overflow: hidden;
-  box-shadow: 0 2px 2px #cd6460;
+  box-shadow: 0 2px 2px var(--orange);
 
 }
 .banner a
@@ -170,16 +194,24 @@ button:hover
 }
 
 /* Change the color of links on hover */
-.banner a:hover {
+.banner a:hover
+{
   transition: all 0.2s ease-in-out;
-  text-shadow: 2px 2px 5px #65ffec;;
+  text-shadow: 2px 2px 5px var(--cyan);;
   cursor:pointer;
 }
 
 /* Add a color to the active/current link */
-.banner a.current {
-  text-shadow: 2px 2px 5px #cd6460;
-  color: #cd6460;
+.banner a.current
+{
+  text-shadow: 2px 2px 5px var(--orange);
+  color: var(--orange);
+}
+
+.summaryFigure
+{
+  margin: 0 auto;
+  width:28%;
 }
 
 #progress-ring-circle
@@ -194,7 +226,21 @@ button:hover
   font: Prime;
   font-size: 30px;
   letter-spacing: 2px;
-  fill: #65ffec;
+  fill: var(--cyan);
+}
+
+#summaryTrackers
+{
+  font-size: 18px;
+  color: var(--green);
+  text-shadow: 2px 2px 5px var(--green);
+}
+
+#trend
+{
+  font-size: 18px;
+  color: var(--green);
+  text-shadow: 2px 2px 5px var(--green);
 }
 
 h2
@@ -215,6 +261,6 @@ ul
   bottom: 0;
   width: 100%;
   height: 60px;
-  color: #65ffec;
+  color: var(--cyan);
   text-align: center;
 }
