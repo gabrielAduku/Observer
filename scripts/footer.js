@@ -10,6 +10,8 @@ document.getElementById('shutdown-icon').addEventListener("click", function ()
   let enabled = chrome.extension.getBackgroundPage().enabled;
   chrome.extension.getBackgroundPage().enabled = enabled ? false : true;
 
+  document.getElementsByTagName("body")[0].classList.toggle("blur-filter");
+
   // fix this later, this is a HACK ****************************
   try
   {

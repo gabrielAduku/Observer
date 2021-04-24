@@ -1,22 +1,37 @@
+// Controls Observer's on/off switch
 var enabled = true;
 
+// Controls today's trackers values
 var trackersFound = 0;
 var trackersBlocked = 0;
 var trackerUrls = [];
-var totalTrackers = 0;
+var efficacy = 0;
+
+// Stores alltime total trackers value
+var alltimeTotalTrackers = 0;
+
 var lastURL = "";
 var newURL = "";
 
+/*
+  webRequest.onBeforeRequest()
+    Fires before a request is made.
+    Add a listener to handling requests before they occur.
+    Syntax: addListener(callback, filter, optionalInfo)
+*/
 chrome.webRequest.onBeforeRequest.addListener(
     function(details)
     {
         if (enabled)
         {
+          // Change statistics
           trackersFound++;
           trackersBlocked++;
           trackerUrls.push(details.url);
-          totalTrackers++;
+          efficacy = trackersFound / trackersBlocked * 100;
+          alltimeTotalTrackers++;
 
+          // Return true/false to block/unblock
           return {cancel: true};
         }
         return {cancel: false };
@@ -54,7 +69,7 @@ chrome.webNavigation.onCompleted.addListener(
         trackerUrls = [];
       }
     });
-    printDebug();
+    //printDebug();
   }
 );
 

@@ -68,6 +68,18 @@ button
   color: var(--yellow);
 }
 
+.attention-spaced
+{
+  margin: 0 auto;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  font-stretch: expanded;
+  text-shadow: 2px 2px 5px var(--orange);
+  color: var(--yellow);
+  margin-top: 10%;
+}
+
 .information
 {
   text-align: center;
@@ -83,7 +95,7 @@ button
   margin-top: 3px;
 }
 
-#arrowRed
+.arrowRed
 {
   float:left;
   width: 24px;
@@ -92,13 +104,22 @@ button
   filter: drop-shadow(1px 1px 5px var(--red_glow));
 }
 
-#arrowGreen
+.arrowGreen
 {
   float:left;
   width: 24px;
   height: 24px;
   -webkit-filter: drop-shadow(1px 1px 5px var(--green));
   filter: drop-shadow(1px 1px 5px var(--green));
+}
+
+.arrowDefault
+{
+  float:left;
+  width: 24px;
+  height: 24px;
+  -webkit-filter: drop-shadow(1px 1px 5px white);
+  filter: drop-shadow(1px 1px 5px white);
 }
 
 #settings-icon:hover
@@ -159,7 +180,8 @@ button
 
 .centeredInfo
 {
-  text-align: center;
+  margin-left: 30%;
+  width:40%;
 }
 
 #svg-ring
@@ -211,7 +233,7 @@ button:hover
 .summaryFigure
 {
   margin: 0 auto;
-  width:28%;
+  width:40%
 }
 
 #progress-ring-circle
@@ -229,18 +251,27 @@ button:hover
   fill: var(--cyan);
 }
 
-#summaryTrackers
+.TodaySummaryTrackers, .AllTimeSummaryTrackers
 {
-  font-size: 18px;
+  float: right;
+  font-size: 15px;
   color: var(--green);
   text-shadow: 2px 2px 5px var(--green);
 }
 
-#trend
+.trendPositive
 {
-  font-size: 18px;
+  float: right;
+  font-size: 14px;
   color: var(--green);
   text-shadow: 2px 2px 5px var(--green);
+}
+.trendNegative
+{
+  float: right;
+  font-size: 14px;
+  color: var(--red_glow);
+  text-shadow: 2px 2px 5px var(--red_glow);
 }
 
 h2
@@ -263,4 +294,18 @@ ul
   height: 60px;
   color: var(--cyan);
   text-align: center;
+}
+
+.blur-filter{
+    transition: all 0.2s ease-in-out;
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+}
+
+.inactive
+{
+  display: none;
 }
