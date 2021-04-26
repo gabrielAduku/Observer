@@ -121,10 +121,12 @@ chrome.webNavigation.onCompleted.addListener(
 
       if (!(newURL === lastURL))
       {
+        /*
         console.log("resetting counters...");
         trackersFound = 0;
         trackersBlocked = 0;
         trackerUrls = [];
+        */
       }
     });
     //printDebug();

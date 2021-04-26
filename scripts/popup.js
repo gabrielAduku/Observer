@@ -48,4 +48,4 @@ function updateOnLabel()
 
 updateOnLabel();
 getTrackerStats();
-chrome.extension.getBackgroundPage().updateStorageData(force=true);
+chrome.extension.getBackgroundPage().updateStorageData();

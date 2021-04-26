@@ -1,6 +1,5 @@
 function updateToday()
 {
-
   // Grab necessary values
   let found = chrome.extension.getBackgroundPage().trackersFound;
   let blocked = chrome.extension.getBackgroundPage().trackersBlocked;
