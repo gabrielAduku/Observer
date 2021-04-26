@@ -1,3 +1,5 @@
+previousDayData = chrome.extension.getBackgroundPage().getStorageData();
+
 function updateToday()
 {
   // Grab necessary values

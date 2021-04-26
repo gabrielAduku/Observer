@@ -1,17 +1,74 @@
 // Controls Observer's on/off switch
 var enabled = true;
 
-// Controls today's trackers values
+// Controls today's trackers' values
 var trackersFound = 0;
 var trackersBlocked = 0;
 var trackerUrls = [];
 var efficacy = 0;
 
+// Controls 24h trackers' values
+var prevTrackersFound = 0;
+var prevTrackersBlocked = 0;
+
+// Controls update scheduling
+var updateSchedule = new Date();
+var nextUpdate = 0;
+
 // Stores alltime total trackers value
 var alltimeTotalTrackers = 0;
 
+// keys for values
+var alltimeTotalTrackers_k = "alltimeTotalTrackers";
+var prevTrackersFound_k = "prevTrackersFound";
+var prevTrackersBlocked_k = "prevTrackersBlocked";
+
 var lastURL = "";
 var newURL = "";
+
+// Accesses and stores data into the browser's storage
+function updateStorageData(force=false)
+{
+  if (force == false)
+  {
+    // Only execute if 24h have passed
+    let timeNow = new Date();
+    if (!(+timeNow >= +nextUpdate))
+    {
+      return;
+    }
+  }
+
+  nextUpdate = new Date(+updateSchedule + 1000 * 60 * 60 * 24)
+
+  console.log(updateSchedule);
+  console.log(nextUpdate);
+  // define key values pairs for storage
+  let content = {
+    alltimeTotalTrackers_k: alltimeTotalTrackers,
+    prevTrackersFound_k:    prevTrackersFound,
+    prevTrackersBlocked_k:  prevTrackersBlocked
+  };
+
+  chrome.storage.local.set(content, function() {
+    console.log("Updated Storage Values Successfully!");
+  });
+}
+
+// Accesses the browser's storage and retrieves data
+function getStorageData()
+{
+  // define array of keys to grab information
+  let keys = ['alltimeTotalTrackers_k', 'prevTrackersFound_k', 'prevTrackersBlocked_k'];
+  var data;
+  chrome.storage.local.get(keys, function(result)
+  {
+    console.log("Values gotten are: "+ result.alltimeTotalTrackers_k + " " + result.prevTrackersFound_k + " " + result.prevTrackersBlocked_k);
+    data = result;
+  });
+
+  return data;
+}
 
 /*
   webRequest.onBeforeRequest()

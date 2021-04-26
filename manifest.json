@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Observer",
-  "version": "0.2",
+  "version": "0.5",
 
   "description": "A Privacy-Enhancing Web Extension",
   "homepage_url": "https://github.com/gabrielAduku/Observer",
@@ -17,7 +17,8 @@
     "http://*/",
     "https://*/",
     "tabs",
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
 
   "background": {
