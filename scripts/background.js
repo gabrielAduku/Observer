@@ -27,9 +27,10 @@ var lastURL = "";
 var newURL = "";
 
 // Accesses and stores data into the browser's storage
+// @param force toggles a force update
 function updateStorageData(force=false)
 {
-  if (force == false)
+  if (!force)
   {
     // Only execute if 24h have passed
     let timeNow = new Date();
@@ -37,17 +38,17 @@ function updateStorageData(force=false)
     {
       return;
     }
+    nextUpdate = new Date(+updateSchedule + 1000 * 60 * 60 * 24);
   }
-
-  nextUpdate = new Date(+updateSchedule + 1000 * 60 * 60 * 24)
 
   console.log(updateSchedule);
   console.log(nextUpdate);
-  // define key values pairs for storage
+
+  // Define key values pairs for storage
   let content = {
     alltimeTotalTrackers_k: alltimeTotalTrackers,
-    prevTrackersFound_k:    prevTrackersFound,
-    prevTrackersBlocked_k:  prevTrackersBlocked
+    trackersFound_k:    trackersFound,
+    trackersBlocked_k:  trackersBlocked
   };
 
   chrome.storage.local.set(content, function() {
@@ -59,15 +60,15 @@ function updateStorageData(force=false)
 function getStorageData()
 {
   // define array of keys to grab information
-  let keys = ['alltimeTotalTrackers_k', 'prevTrackersFound_k', 'prevTrackersBlocked_k'];
-  var data;
+  let keys = ['alltimeTotalTrackers_k', 'trackersFound_k', 'trackersBlocked_k'];
   chrome.storage.local.get(keys, function(result)
   {
-    console.log("Values gotten are: "+ result.alltimeTotalTrackers_k + " " + result.prevTrackersFound_k + " " + result.prevTrackersBlocked_k);
-    data = result;
-  });
+    console.log(result);
+    alltimeTotalTrackers = result.alltimeTotalTrackers_k;
+    prevTrackersFound = result.trackersFound_k;
+    prevTrackersBlocked = result.trackersBlocked_k;
 
-  return data;
+  });
 }
 
 /*

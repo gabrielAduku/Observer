@@ -1,7 +1,6 @@
-previousDayData = chrome.extension.getBackgroundPage().getStorageData();
-
 function updateToday()
 {
+
   // Grab necessary values
   let found = chrome.extension.getBackgroundPage().trackersFound;
   let blocked = chrome.extension.getBackgroundPage().trackersBlocked;
@@ -32,12 +31,15 @@ function updateAlltime()
 
 function updateTrend()
 {
-  // need 24h data, but lets assume these are the values for now
-  let prevBlocked = 500;
-
+  // Grab 24h data
+  let prevBlocked = chrome.extension.getBackgroundPage().prevTrackersBlocked;
   let todayBlocked = chrome.extension.getBackgroundPage().trackersBlocked;
-
   let trendBlocked = Math.round(((todayBlocked - prevBlocked) / prevBlocked) * 100);
+
+  // These should not happen, but just in case...
+  if (isNaN(trendBlocked)) { trendBlocked = 0; };
+  if (isNaN(todayBlocked)) { todayBlocked = 0; };
+  if (isNaN(prevBlocked))   { prevBlocked = 0; };
 
   var trendImg = document.getElementById("trend-img");
   var trendText = document.getElementById("trend");
@@ -59,6 +61,7 @@ function updateTrend()
   trendText.innerText = trendBlocked.toString() + "%";
 }
 
+chrome.extension.getBackgroundPage().getStorageData();
 updateToday();
 updateAlltime();
 updateTrend();
