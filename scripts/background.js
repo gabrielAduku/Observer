@@ -8,15 +8,15 @@ var trackerUrls = [];
 var efficacy = 0;
 
 // Controls 24h trackers' values
-var prevTrackersFound = 0;
-var prevTrackersBlocked = 0;
+var prevTrackersFound = 2;
+var prevTrackersBlocked = 3;
 
 // Controls update scheduling
 var updateSchedule = new Date();
 var nextUpdate = 0;
 
 // Stores alltime total trackers value
-var alltimeTotalTrackers = 0;
+var alltimeTotalTrackers = 1;
 
 // keys for values
 var alltimeTotalTrackers_k = "alltimeTotalTrackers";
@@ -28,7 +28,7 @@ var newURL = "";
 
 // Accesses and stores data into the browser's storage
 // @param force toggles a force update
-function updateStorageData(force=false)
+function updateStorageData(force=false, alltime=alltimeTotalTrackers, found=prevTrackersFound, blocked=prevTrackersBlocked)
 {
   if (!force)
   {
@@ -46,9 +46,9 @@ function updateStorageData(force=false)
 
   // Define key values pairs for storage
   let content = {
-    alltimeTotalTrackers_k: alltimeTotalTrackers,
-    trackersFound_k:    trackersFound,
-    trackersBlocked_k:  trackersBlocked
+    alltimeTotalTrackers_k: alltime,
+    trackersFound_k:    found,
+    trackersBlocked_k:  blocked
   };
 
   chrome.storage.local.set(content, function() {

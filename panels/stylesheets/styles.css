@@ -27,14 +27,15 @@ body
 
 button
 {
-  background-color: var(--red);
+  background-color: var(--background_dark);
+  color: var(--red_glow);
   box-shadow: 0px 1px 5px var(--red_glow);
   border-radius: 5px;
   border-width: 1px;
   border-color: var(--orange);
   outline: none;
-  width: 100px;
-  height: 50px;
+  width: 70px;
+  height: 40px;
   transition: all 0.2s ease-in-out;
   font-size: 15px;
 }
@@ -136,6 +137,12 @@ button
   width: 50%;
 }
 
+.options-main
+{
+  margin: 0 auto;
+  width: 80%;
+}
+
 .summary-main, .details-main
 {
   margin-top: 20px;
@@ -143,7 +150,6 @@ button
 
 .overflow-box
 {
-
   margin: 0 auto;
   overflow:auto;
   width:350px;
@@ -193,7 +199,7 @@ button
 
 button:hover
 {
-  box-shadow: 0px 2px 15px var(--red_glow);
+  box-shadow: 0px 0px 15px var(--red_glow);
   cursor:pointer;
 }
 
