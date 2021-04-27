@@ -8,15 +8,15 @@ var trackerUrls = [];
 var efficacy = 0;
 
 // Controls 24h trackers' values
-var prevTrackersFound = 2;
-var prevTrackersBlocked = 3;
+var prevTrackersFound = 0;
+var prevTrackersBlocked = 0;
 
 // Controls update scheduling
 var updateSchedule = new Date();
 var nextUpdate = 0;
 
 // Stores alltime total trackers value
-var alltimeTotalTrackers = 1;
+var alltimeTotalTrackers = 0;
 
 // keys for values
 var alltimeTotalTrackers_k = "alltimeTotalTrackers";
@@ -25,6 +25,23 @@ var prevTrackersBlocked_k = "prevTrackersBlocked";
 
 var lastURL = "";
 var newURL = "";
+
+var exempt_list = [];
+
+function storeExemptList(content)
+{
+  chrome.storage.local.set(content, function() {
+    console.log("Updated Exempt List Successfully!");
+  });
+}
+
+function refreshExemptList()
+{
+  chrome.storage.local.get("exempt_list", function(result) {
+    exempt_list = result.exempt_list;
+    console.log(exempt_list);
+  });
+}
 
 // Accesses and stores data into the browser's storage
 // @param force toggles a force update
@@ -82,11 +99,17 @@ chrome.webRequest.onBeforeRequest.addListener(
     {
         if (enabled)
         {
-          // Change statistics
           trackersFound++;
-          trackersBlocked++;
           trackerUrls.push(details.url);
-          efficacy = trackersFound / trackersBlocked * 100;
+          if (exempt_list.includes(details.url))
+          {
+            console.log("this one is exempt!");
+            return {cancel: false}
+          }
+
+          // Change statistics
+          trackersBlocked++;
+          efficacy = Math.round((trackersBlocked / trackersFound) * 100);
           alltimeTotalTrackers++;
 
           // Return true/false to block/unblock

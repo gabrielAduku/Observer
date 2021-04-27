@@ -18,8 +18,7 @@ function getTrackerStats()
   var trackersFound = chrome.extension.getBackgroundPage().trackersFound;
   var trackersBlocked = chrome.extension.getBackgroundPage().trackersBlocked;
   var trackerUrls = chrome.extension.getBackgroundPage().trackerUrls;
-
-  var percentBlocked = trackersFound / trackersBlocked * 100;
+  var percentBlocked = chrome.extension.getBackgroundPage().efficacy;
 
   if (isNaN(percentBlocked))
   {
