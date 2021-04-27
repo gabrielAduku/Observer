@@ -42,6 +42,7 @@ button
 .wide-text
 {
   margin: 0 auto;
+  margin-right: 10px;
   padding: 0;
   letter-spacing: 5px;
   font-size: 12px;

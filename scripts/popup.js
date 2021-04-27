@@ -1,4 +1,3 @@
-
 // PROGRESS RING VARS
 var ring = document.getElementById('progress-ring-circle');
 var radius = ring.r.baseVal.value;

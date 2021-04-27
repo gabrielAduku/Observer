@@ -33,7 +33,7 @@ function updateTrend()
   // Grab 24h data
   let prevBlocked = chrome.extension.getBackgroundPage().prevTrackersBlocked;
   let todayBlocked = chrome.extension.getBackgroundPage().trackersBlocked;
-  let trendBlocked = Math.round(((todayBlocked - prevBlocked) / prevBlocked) * 100);
+  let trendBlocked = Math.round(((todayBlocked - prevBlocked) / Math.abs(prevBlocked)) * 100);
 
   // These should not happen, but just in case...
   if (isNaN(trendBlocked)) { trendBlocked = 0; };

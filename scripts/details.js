@@ -17,7 +17,7 @@ for (var i = 0; i < trackerUrls.length; i++)
   checkbox.value = "block";
   checkbox.id = "cb" + i;
 
-  // Shorten strings for now
+  // Shorten strings
   var trackerString = trackerUrls[i];
   if (trackerString.length > maxLength)
   {

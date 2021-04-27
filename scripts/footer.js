@@ -1,7 +1,15 @@
 
 document.getElementById('settings-icon').addEventListener("click", function ()
 {
-  document.location.href = "/panels/options.html";
+  //document.location.href = "/panels/options.html";
+  if (chrome.runtime.openOptionsPage)
+  {
+    chrome.runtime.openOptionsPage();
+  }
+  else
+  {
+    window.open(chrome.runtime.getURL('options.html'));
+  }
 });
 
 // Flip a switch if app is enabled or not
