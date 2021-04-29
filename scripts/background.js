@@ -45,21 +45,29 @@ function refreshExemptList()
 
 // Accesses and stores data into the browser's storage
 // @param force toggles a force update
-function updateStorageData(force=false, alltime=alltimeTotalTrackers, found=prevTrackersFound, blocked=prevTrackersBlocked)
+function updateStorageData(force=false, alltime=alltimeTotalTrackers, found=trackersFound, blocked=trackersBlocked)
 {
   if (!force)
   {
     // Only execute if 24h have passed
     let timeNow = new Date();
-    if (!(+timeNow >= +nextUpdate))
+    if (+timeNow >= +nextUpdate)
+    {
+      console.log("updating summary");
+      nextUpdate = new Date(+timeNow + 60 * 60 * 24);
+    }
+    else
     {
       return;
     }
-    nextUpdate = new Date(+updateSchedule + 1000 * 60 * 60 * 24);
   }
 
   console.log(updateSchedule);
   console.log(nextUpdate);
+
+  console.log("alltime:" + alltime);
+  console.log("found:" + found);
+  console.log("blocked:" + blocked);
 
   // Define key values pairs for storage
   let content = {
@@ -71,6 +79,9 @@ function updateStorageData(force=false, alltime=alltimeTotalTrackers, found=prev
   chrome.storage.local.set(content, function() {
     console.log("Updated Storage Values Successfully!");
   });
+
+  // Refresh internal variables
+  getStorageData();
 }
 
 // Accesses the browser's storage and retrieves data

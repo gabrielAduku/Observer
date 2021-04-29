@@ -36,9 +36,9 @@ function updateTrend()
   let trendBlocked = Math.round(((todayBlocked - prevBlocked) / Math.abs(prevBlocked)) * 100);
 
   // These should not happen, but just in case...
-  if (isNaN(trendBlocked)) { trendBlocked = 0; };
-  if (isNaN(todayBlocked)) { todayBlocked = 0; };
-  if (isNaN(prevBlocked))   { prevBlocked = 0; };
+  if (isNaN(trendBlocked) || !isFinite(trendBlocked)) { trendBlocked = 0; };
+  if (isNaN(todayBlocked) || !isFinite(todayBlocked)) { todayBlocked = 0; };
+  if (isNaN(prevBlocked)  || !isFinite(prevBlocked))  { prevBlocked = 0; };
 
   var trendImg = document.getElementById("trend-img");
   var trendText = document.getElementById("trend");
@@ -60,7 +60,7 @@ function updateTrend()
   trendText.innerText = trendBlocked.toString() + "%";
 }
 
-chrome.extension.getBackgroundPage().getStorageData();
+//chrome.extension.getBackgroundPage().getStorageData();
 updateToday();
 updateAlltime();
 updateTrend();
