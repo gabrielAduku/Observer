@@ -54,7 +54,7 @@ function updateStorageData(force=false, alltime=alltimeTotalTrackers, found=trac
     if (+timeNow >= +nextUpdate)
     {
       console.log("updating summary");
-      nextUpdate = new Date(+timeNow + 60 * 60 * 24);
+      nextUpdate = new Date(+timeNow + 1000 * 60 * 60 * 24);
     }
     else
     {

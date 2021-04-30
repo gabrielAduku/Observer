@@ -25,21 +25,6 @@ body
   background: radial-gradient(circle, var(--background_redder) 0%, var(--background_dark) 100%);
 }
 
-button
-{
-  background-color: var(--background_dark);
-  color: var(--red_glow);
-  box-shadow: 0px 1px 5px var(--red_glow);
-  border-radius: 5px;
-  border-width: 1px;
-  border-color: var(--orange);
-  outline: none;
-  width: 70px;
-  height: 40px;
-  transition: all 0.2s ease-in-out;
-  font-size: 15px;
-}
-
 .wide-text
 {
   margin: 0 auto;
@@ -131,6 +116,42 @@ button
   transition: all 0.7s ease-in-out 0s;
 }
 
+button
+{
+  text-align: center;
+  background-color: transparent;
+  width: 80px;
+  height: 40px;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+button:hover
+{
+  cursor:pointer;
+}
+
+#confirm-changes
+{
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+
+#confirm-changes:hover
+{
+  box-shadow: 0px 1px 5px var(--green);
+}
+
+#reset-button
+{
+  color: var(--red_glow);
+  border: 1px solid var(--red_glow);
+}
+
+#reset-button:hover
+{
+  box-shadow: 0px 1px 5px var(--red_glow);
+}
+
 .main
 {
   margin: 0 auto;
@@ -197,11 +218,6 @@ button
   text-align: center;
 }
 
-button:hover
-{
-  box-shadow: 0px 0px 15px var(--red_glow);
-  cursor:pointer;
-}
 
 .banner
 {
