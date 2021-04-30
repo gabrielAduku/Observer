@@ -132,13 +132,18 @@ chrome.webRequest.onBeforeRequest.addListener(
     ["blocking"]
 );
 
-chrome.webNavigation.onBeforeNavigate.addListener(
-  function()
+chrome.webNavigation.onCommitted.addListener(
+  function(details)
   {
+    var possibleTransitions = ["link", "typed", "auto_bookmark", "generated", "reload"]
     chrome.tabs.query({active:true, currentWindow:true}, function(tabs)
     {
-      // Get tab url
-      lastURL = tabs[0].url;
+      if (possibleTransitions.includes(details.transitionType))
+      {
+        trackersFound = 0;
+        trackersBlocked = 0;
+        trackerUrls = [];
+      }
     });
     //printDebug();
   }
@@ -151,27 +156,8 @@ chrome.webNavigation.onCompleted.addListener(
     chrome.tabs.query({active:true, currentWindow:true}, function(tabs)
     {
       // Get tab url
-      newURL = tabs[0].url;
-
-      if (!(newURL === lastURL))
-      {
-        /*
-        console.log("resetting counters...");
-        trackersFound = 0;
-        trackersBlocked = 0;
-        trackerUrls = [];
-        */
-      }
+      tabURL = tabs[0].url;
+      console.log(tabURL);
     });
-    //printDebug();
   }
 );
-
-// debug stuff
-function printDebug()
-{
-  console.log("Trackers found:" + trackersFound);
-  console.log("Trackers blocked:" + trackersBlocked);
-  console.log("Trackers urls:" + trackerUrls);
-  console.log("Total trackers: " + totalTrackers);
-}

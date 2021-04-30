@@ -1,4 +1,4 @@
-// PROGRESS RING VARS
+// Progress ring variables
 var ring = document.getElementById('progress-ring-circle');
 var radius = ring.r.baseVal.value;
 var circumference = radius * 2 * Math.PI;
@@ -8,7 +8,7 @@ ring.style.strokeDashoffset = `${circumference}`;
 
 function setProgRing(progress)
 {
-  const offset = circumference - progress / 100 * circumference;
+  const offset = circumference - (progress / 100 * circumference);
   ring.style.strokeDashoffset = offset;
   document.getElementById('trackers-blocked-percent').textContent = progress.toString() + '%';
 }

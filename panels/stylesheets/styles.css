@@ -132,6 +132,7 @@ button:hover
 
 #confirm-changes
 {
+  margin-top: 10px;
   color: var(--green);
   border: 1px solid var(--green);
 }
