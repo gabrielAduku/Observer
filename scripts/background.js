@@ -23,9 +23,6 @@ var alltimeTotalTrackers_k = "alltimeTotalTrackers";
 var prevTrackersFound_k = "prevTrackersFound";
 var prevTrackersBlocked_k = "prevTrackersBlocked";
 
-var lastURL = "";
-var newURL = "";
-
 var exempt_list = [];
 
 function storeExemptList(content)
@@ -114,7 +111,6 @@ chrome.webRequest.onBeforeRequest.addListener(
           trackerUrls.push(details.url);
           if (exempt_list.includes(details.url))
           {
-            console.log("this one is exempt!");
             return {cancel: false}
           }
 
@@ -146,18 +142,5 @@ chrome.webNavigation.onCommitted.addListener(
       }
     });
     //printDebug();
-  }
-);
-
-// Fix this, sometimes onCompleted does not trigger
-chrome.webNavigation.onCompleted.addListener(
-  function()
-  {
-    chrome.tabs.query({active:true, currentWindow:true}, function(tabs)
-    {
-      // Get tab url
-      tabURL = tabs[0].url;
-      console.log(tabURL);
-    });
   }
 );
